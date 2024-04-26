@@ -1,27 +1,28 @@
-# Ngsynth
+# Angular Web Audio melodies sample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.4.
+Developer sample app written in Angular demonstrating melody generation using the Gemini API. The generated melodies are played in the browser using the Web Audio API.
 
-## Development server
+## Pre-requisites
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Node.js and npm
+  * Download and install Go: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+2. Gemini API key
+  * Launch Google AI Studio: https://aistudio.google.com/
+  * Click “Get API Key”
 
-## Code scaffolding
+## Getting started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Compile and run the app:
 
-## Build
+```shell
+npm i
+npm start
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+In the text box with placeholder "API key" enter your Gemini API key. Enter a prompt, for example, "Twinkle Twinkle Little Star" and click "Generate".
 
-## Running unit tests
+## API key privacy
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Calling the Google AI Gemini API directly from the app frontend is recommended for prototyping only. We strongly recommend that you only call the Google AI Gemini API server-side to keep your API key safe. You risk potentially exposing your API key to malicious actors if you embed the API key directly in your web, mobile, or desktop app or fetch it remotely at runtime.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Find an example how to do this in the following [Gemini tutorials](https://ai.google.dev/gemini-api/docs/get-started).

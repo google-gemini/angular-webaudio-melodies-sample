@@ -1,0 +1,51 @@
+/**
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* Text Input Styles */
+.input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px; /* Slightly rounded corners */
+  width: 250px;  
+  font-size: 16px;
+  transition: box-shadow 0.3s ease; /* Add a smooth shadow transition */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff; /* Blue highlight on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+}
+
+/* Button Styles */
+.button {
+  background-color: #007bff; /* Blue background */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Add a smooth color transition */
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.button:active {
+  background-color: #003d82; /* Even darker blue when clicked */
+}

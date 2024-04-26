@@ -16,6 +16,7 @@
             "outputPath": "dist/ngsynth",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref" : "/gemini-8bit-ringtone-generator/",
             "polyfills": [
               "zone.js"
             ],
