@@ -49,3 +49,18 @@
 .button:active {
   background-color: #003d82; /* Even darker blue when clicked */
 }
+
+.error {
+  color: red;
+  min-height: 40px;
+  max-height: auto;
+}
+
+label span {
+  width: 60px;
+  display: inline-block;
+}
+
+details summary {
+  cursor: pointer;
+}

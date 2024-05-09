@@ -49,7 +49,7 @@ export class KeyboardComponent {
 
   ngOnInit() {
     this.mainGainNode.connect(this.audioContext.destination);
-    this.mainGainNode.gain.value = 100;
+    this.mainGainNode.gain.value = 0.5;
   }
 
   playMelody(melody: [string, number, number][], start = 0) {
