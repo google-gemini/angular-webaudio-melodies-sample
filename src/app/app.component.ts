@@ -94,9 +94,9 @@ export class AppComponent {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
-  
-      const tune = JSON.parse(text.replace('```js', '').replace('```javascript', '').replace('```json', '').replace('```', ''));
-  
+
+      const tune = JSON.parse(text.replace(/```json/i, '').replace(/```js/i, '').replace(/```javascript/i, '').replace('```', ''));
+
       this.keyboard().playMelody(tune);
     } catch (e: unknown) {
       this.error = <string>e;
