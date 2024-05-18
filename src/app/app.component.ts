@@ -85,8 +85,9 @@ export class AppComponent {
     const genAI = new GoogleGenerativeAI(this.apiKey().nativeElement.value);
 
     const model = genAI.getGenerativeModel({
-      model: 'gemini-pro'
+      model: 'gemini-1.5-pro-latest'
     });
+    model.generationConfig.responseMimeType = 'application/json'
     
     this.loading = true;
 
@@ -94,8 +95,7 @@ export class AppComponent {
       const result = await model.generateContent(prompt);
       const response = await result.response;
       const text = response.text();
-
-      const tune = JSON.parse(text.replace(/```json/i, '').replace(/```js/i, '').replace(/```javascript/i, '').replace('```', ''));
+      const tune = JSON.parse(text);
 
       this.keyboard().playMelody(tune);
     } catch (e: unknown) {
