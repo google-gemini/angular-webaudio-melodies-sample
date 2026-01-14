@@ -15,3 +15,35 @@
  */
 
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --mat-app-background-color: #121212;
+  --mat-card-background-color: #1e1e1e;
+  --mat-card-header-text-color: #ffffff;
+  --mat-card-subtitle-text-color: #b3b3b3;
+  --mat-card-content-text-color: #ffffff;
+  --mat-primary-color: #bb86fc;
+  --mat-accent-color: #03dac6;
+  --mat-warn-color: #cf6679;
+}
+
+body {
+  background-color: var(--mat-app-background-color);
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 24px;
+}
+
+.mat-card {
+  background-color: var(--mat-card-background-color);
+  color: var(--mat-card-content-text-color);
+}
+
+.mat-card-header {
+  color: var(--mat-card-header-text-color);
+}
+
+.mat-card-subtitle {
+  color: var(--mat-card-subtitle-text-color);
+}

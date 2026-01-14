@@ -55,7 +55,7 @@ The melody should be about: `;
       <span>Prompt:</span>
       <input placeholder="Enter your prompt" #prompt class="input">
     </label>
-    &nbsp;<button [disabled]="loading || !prompt" class="button" (click)="generateTune(prompt.value); prompt.value = ''">
+    &nbsp;<button [disabled]="loading || !prompt.value" class="button" (click)="generateTune(prompt.value); prompt.value = ''">
       @if (loading) {
         Loading...
       } @else {
@@ -63,9 +63,19 @@ The melody should be about: `;
       }
     </button>
     <br>
+    <span>Examples:</span>
+    <button class="button" (click)="prompt.value = 'A fast-paced, upbeat melody in a major key.'">Upbeat</button>
+    <button class="button" (click)="prompt.value = 'A slow, melancholic melody in a minor key.'">Melancholic</button>
+    <button class="button" (click)="prompt.value = 'A mysterious and suspenseful melody.'">Mysterious</button>
+    <br>
     <div class="error">{{ error }}</div>
     <br>
     <app-keyboard/>
+    <br>
+    <div class="output">
+      <h2>Generated Melody</h2>
+      <pre>{{ generatedTune }}</pre>
+    </div>
   `,
   styleUrl: 'app.component.css'
 })
@@ -74,18 +84,22 @@ export class AppComponent {
   protected apiKey = viewChild.required<ElementRef<HTMLInputElement>>('apiKey');
   protected loading = false;
   protected error = '';
+  protected generatedTune = '';
 
   async generateTune(prompt: string) {
+    if (!this.apiKey().nativeElement.value) {
+      this.error = 'Please enter an API key.';
+      return;
+    }
+    this.error = '';
+    this.generatedTune = '';
+
     prompt = basePrompt + prompt;
 
-    /**
-     * For production apps, make sure you use the Gemini API key **only**
-     * on the server. Find more at https://ai.google.dev/gemini-api/docs/get-started/web
-     */
     const genAI = new GoogleGenerativeAI(this.apiKey().nativeElement.value);
 
     const model = genAI.getGenerativeModel({
-      model: 'gemini-1.5-pro-latest'
+      model: 'gemini-pro'
     });
     model.generationConfig.responseMimeType = 'application/json';
     
@@ -97,9 +111,10 @@ export class AppComponent {
       const text = response.text();
       const tune = JSON.parse(text);
 
+      this.generatedTune = JSON.stringify(tune, null, 2);
       this.keyboard().playMelody(tune);
     } catch (e: unknown) {
-      this.error = <string>e;
+      this.error = e as string;
     } finally {
       this.loading = false;
     }
